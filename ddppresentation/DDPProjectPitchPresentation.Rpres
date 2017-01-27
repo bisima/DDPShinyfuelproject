@@ -1,0 +1,57 @@
+
+DEVELOPING DATA PRODUCTS COURSE PROJECT
+========================================================
+author: Habibu Atib
+date: 27 January 2017
+autosize: true
+
+Introduction: Fuel Management Application
+========================================================
+Fuel Management Application (FMA) is a computerised system that
+support Fuel Attendant to process daily fuel purchase transactions.
+FMA has two features:
+- SET Fuel Prices: <small> At the start of business day the fuel attendant sets fuel
+unit prices using this feature.</small>
+- Purchase Fuel: <small> The fuel attendant uses this feature to process customer fuel
+transactions. The fuel attendant has option to select the fuel type and number of litres
+purchased then the application automatically provides the total amount. 
+(No need of calculator) </small>
+
+FMA: Set Fuel Interface Feature
+========================================================
+<small> The Fuel Attendant set fuel unit uses this interface.
+(See diagram below). </small>
+
+![alt text](set_fuel.png)
+
+FMA: Purchase Fuel Interface Feature
+========================================================
+<small> The Fuel Attendant uses run the daily customer purchases: </small>
+![alt text](purchase_fuel_with_fueltype.png)
+![alt text](purchase_fuel.png)
+
+FMA Sample computation using R.
+========================================================
+Fuel Unit Price
+<small>
+```{r, echo=FALSE}
+fuelTypeP <- c("unleaded Petrol", "Diesel", "LPG Gas")
+fuelmat = matrix(c(138,115,92),1,3)
+fuelData <- data.frame(fuelmat)
+colnames(fuelData) <- fuelTypeP
+fuelData
+```
+
+```{r, echo=FALSE}
+fuelPriceU <- data.frame(10,20,30)
+TotalPriceU <- fuelPriceU[1] * fuelData[1,1]
+TotalPriceD <- fuelPriceU[2] * fuelData[,2]
+TotalPriceL <- fuelPriceU [3]* fuelData[,3]
+paste ("10 litres of Unleaded Petrol will cost:", TotalPriceU)
+paste ("20 litres of Diesel will cost:", TotalPriceD)
+paste ("30 litres of LPG Gas will cost:", TotalPriceL)
+```
+</small>
+<small>Try out FMA Application: https://bisima.shinyapps.io/fuelApp/ </small>
+<small>FMA ui.R and server.R files: https://github.com/bisima/DDPShinyfuelproject </small>
+<small>FMA Presentation: https://github.com/bisima/DDPShinyfuelproject </small>
